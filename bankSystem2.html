@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Balance</title>
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheet.css">
+</head>
+<body>
+    
+
+
+    <div id="login-area">
+        <h1 class="text-center">Welcome to Our Bank  </h1>
+
+        <div class= "container">
+            <h4>Login</h4>
+            <input type="text" class="form-control" placeholder="Email">
+            <br> 
+            <input type="password" class="form-control" placeholder="Password">
+            <br>
+
+            <button id="login" class="btn btn-success">Enter</button> 
+        </div>
+            
+    </div>
+
+<div id="transaction-area"class="container">
+   
+<div class="row">
+    <div id="" class=" boxArea bg-success">
+        <h5>Deposit </h5>
+        <h2>$ <span id="currentDeposit">00 </span></h2>
+    </div>
+    <div class=" boxArea bg-warning ">
+        <h5>Withdraw</h5>
+        <h2>$ <span id="currentwithdraw">00</span></h2>
+    </div>
+    <div class=" boxArea ">
+        <h5>Balance</h5>
+        <h2 >$ <span id="addAmount">1200</span></h2>
+    </div>
+</div>
+
+
+<div class="row">
+
+<div class="Deposit">
+    <h3>Deposit</h3>
+    <input id="depositAmount"  type="text" class="form-control"placeholder="$amount you want to diposit">
+    
+    <button id="add" class="btn btn-success"> Deposit</button>
+</div>
+
+<div class="Deposit">
+    <h3>Withdraw</h3><br>
+    <input id="withdrawAmount" type="text"class="form-control" placeholder="$amount you want to withdraw">
+    <br> 
+    <button id="sub" class="btn btn-success">Withdraw  </button>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- login button event handlar -->
+
+<script>
+    var loginBtn = document.getElementById('login');
+    loginBtn.addEventListener('click',function(){
+        const loginArea= document.getElementById('login-area') ;
+        loginArea.style.display= 'none'
+
+        const transactionArea= document.getElementById('transaction-area')
+        transactionArea.style.display= 'block';
+    })
+
+
+    //deposit button event handler
+
+     var dipositBtn=document.getElementById("add");
+    dipositBtn.addEventListener("click", function(){
+        //var despositAmount=document.getElementById("depositAmount").value;
+        const depositNumber =WithdrawMoney("depositAmount")
+        
+       console.log(depositNumber)
+      
+      addMoney("currentDeposit",depositNumber);
+       addMoney("addAmount",depositNumber);
+
+
+       document.getElementById("depositAmount").value='';  
+    
+    
+    })
+
+
+    
+    // withdrow button event handler
+
+    var dipositBtn=document.getElementById("sub");
+    dipositBtn.addEventListener("click", function(){
+        var despositAmount=document.getElementById("withdrawAmount").value;
+        const withdrawNumber = parseFloat( despositAmount);
+
+         WithdrawMoney("currentwithdraw",withdrawNumber)
+
+        WithdrawMoney("addAmount",withdrawNumber)
+
+        document.getElementById("currentwithdraw").innerText = withdrawNumber;
+        
+    const withdraw = WithdrawMoney("withdrawAmount")
+       document.getElementById("addAmount").innerText-=withdraw
+       document.getElementById("withdrawAmount").value='';
+    
+     
+    
+    })
+
+
+function addMoney(id,depositNumber){
+    var Addamount=document.getElementById(id).innerText
+    Addamount=parseFloat(Addamount);
+    totulBalance=depositNumber+ Addamount;
+    document.getElementById(id).innerText = totulBalance;
+        
+
+}
+
+
+    
+    
+function WithdrawMoney(id){
+     var Addamount=document.getElementById(id).value
+    Addamount=parseFloat(Addamount);
+    
+    
+    return  Addamount;
+    
+   
+
+}
+
+
+
+</script>
+
+
+</body>
+</html>

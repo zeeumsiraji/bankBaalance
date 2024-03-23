@@ -1,0 +1,40 @@
+body{
+    padding: 100px;
+}
+
+.submit-area{
+    margin-top: 50px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px gray;
+}
+#transaction-area{
+
+    display: none;
+}
+.boxArea{
+width: 30%;
+    margin: 10px;
+    height: 150px;
+    background-color: antiquewhite;  
+    text-align: justify;
+}
+.container{
+    width: 60%;
+    height:200px;
+
+}
+.Deposit{
+    padding:2% ;
+    width:40%;
+    height: 200px;
+    
+
+    background-color: aqua;
+    /* border: 2% rgb(156, 155, 154); */
+     box-shadow: 5px 5px 10px gray; 
+     display: flex;
+     margin: 10px;
+     flex-wrap: wrap;
+   
+}
